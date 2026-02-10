@@ -3,7 +3,8 @@
 A lightweight native macOS habit tracker with:
 
 - **Pomodoro-style session tracker** (work/rest, pause/resume, configurable durations)
-- **Menu bar countdown badge**
+- **Menu bar countdown badge + quick popup**
+- **Session manager window + full habit dashboard window**
 - **Session logging to JSON + CSV**
 - **Optional daily planner import** from markdown (`YYYY-MM-DD.md`)
 - **Habit tracking** with yes/no or numeric metrics, colors, and calendar visualization
@@ -13,7 +14,7 @@ A lightweight native macOS habit tracker with:
 ### Prerequisites
 
 - macOS 13+
-- Xcode 15+ (or Swift 5.9+ toolchain)
+- Xcode 15+ (or Swift 5.8+ toolchain)
 
 ### Terminal
 
@@ -21,13 +22,21 @@ A lightweight native macOS habit tracker with:
 swift run
 ```
 
-### Generate Xcode project-style opening
+### Open in Xcode
 
 ```bash
 open Package.swift
 ```
 
 Then run the `HabitTracker` executable target.
+
+## Window model
+
+- **Menu bar popup**: compact quick controls (name, labels, start/pause/resume, complete).
+- **Session Manager window**: the default app window for timer flow and window navigation.
+- **Habit Dashboard window**: full session + habits UI.
+
+You can open both windows from the menu bar popup.
 
 ## Planner markdown format
 
@@ -58,9 +67,3 @@ Files:
 - `snapshot.json` (settings, current state, habits, habit logs)
 - `session_logs.json` (session history)
 - `session_logs.csv` (session history for spreadsheets)
-
-## Notes
-
-- If no planner file is found for today, the app falls back to manual names/labels.
-- Session completion can use a chore title/labels or manual metadata.
-- Structure is intentionally modular for adding features later.
